@@ -1,0 +1,50 @@
+<%- include('./partials/header.ejs') %> 
+<body>
+    <div class="navbar pt-3" id="navbar"></div>
+
+    <div class="container header">
+        <h1 class="display-1 title" id="title-note">Note</h1>
+        <h1 class="display-1 title" id="">Taker</h1>
+    </div>
+
+    <div class="container w-25" id="separator"></div>
+
+    <div class="container">
+        <h2 class="display-5" id="add-note">Add a New Note</h2>
+    </div>
+
+    <form method="POST" action="/savenote" class="container d-flex flex-column">
+        <div class="container">
+            <textarea name="note" id="note-text" class="form-control form-control-lg" placeholder="Write your note here!"></textarea>
+        </div>
+        <div class="container">
+            <button type="submit" class="btn btn-primary btn-lg w-25 mt-3 d-flex justify-content-center">Save</button>
+        </div>
+    </form>
+
+    <div class="container d-flex mt-3">
+        <div class="container row d-flex">
+            <% var noteNumber = notes.length %> 
+            <% notes.forEach(note => { %>
+                
+                <div class="container col-12 col-sm-6 p-0">
+                    <div class="container note-div d-flex flex-column align-items-start flex-fill p-3 ps-4 pe-4">
+                        <h4 class="h4">Note <%= noteNumber %></h4>
+                        <p class="mb-auto text-break text-wrap"><%= note.content %></p>
+                        <div class="container justify-content-evenly mt-auto">      
+                            <form action="/deletenote" method="post" class="container mt-4">
+                                <input type="hidden" name="noteid" value="<%= note.id %>">
+                                <button  class="btn btn-primary form-control me-5 ms-5 w-25 p-1 d-flex justify-content-center">Delete</button>
+                            </form>
+                        </div>
+                        <% noteNumber-- %> 
+                    </div>
+                </div>
+
+            <% }) %>
+            <% noteNumber = 0%>
+        </div>
+    </div>
+    <%- include('./partials/footer.ejs') %> 
+</body>
+</html>
