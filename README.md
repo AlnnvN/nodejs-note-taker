@@ -6,7 +6,7 @@ A simple bootstrap-based note taker using node.js, express.js and mysql (sequeli
 
 
 
-How to run it:
+#How to run it:
  
 It is required to have MySQL and NodeJS installed. Once cloned, <nodejs-note-taker/database/database.js/> needs to be adjusted to your own MySQL settings - as of now it expects a database schema called 'notetaker' and will try to log in using user 'root' and the password '123456'. Change the parameters as needed: ![image](https://user-images.githubusercontent.com/108158031/209033261-300b452e-118f-4954-93ac-b3e5f055e24d.png)
 
